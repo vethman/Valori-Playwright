@@ -1,10 +1,8 @@
 import { test } from './my-test';
 
-test.beforeEach(async ({ loginPage }) => {
-  await loginPage.goto();
-});
-
 test('input velden niet vullen resulteert in errors bij inloggen', async ({ loginPage }) => {
+  await loginPage.goto();
+
   await loginPage.assertUsernameInputHasError(false);
   await loginPage.assertPasswordInputHasError(false);
   await loginPage.assertErrorMessage(false);

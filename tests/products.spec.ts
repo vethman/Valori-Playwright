@@ -5,10 +5,11 @@ import { Product } from '../enums/product';
 test.beforeEach(async ({ loginPage, productsPage }) => {
   await loginPage.goto();
   await loginPage.loginWithUser(Username.Standard);
-  await productsPage.goto();
 });
 
 test('toevoegen/verwijderen item update aantal in winkelwagen', async ({ shoppingCartPage, productsPage }) => {
+  await productsPage.goto();
+
   await shoppingCartPage.assertNumberOfItemsInShoppingCartIcon(0);
 
   await productsPage.addToCart(Product.SauceLabsBackpack);

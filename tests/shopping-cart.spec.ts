@@ -5,10 +5,11 @@ import { Product } from '../enums/product';
 test.beforeEach(async ({ loginPage, productsPage }) => {
   await loginPage.goto();
   await loginPage.loginWithUser(Username.Standard);
-  await productsPage.goto();
 });
 
 test('toevoegen en verwijderen via shopping cart', async ({ shoppingCartPage, productsPage }) => {
+  await productsPage.goto();
+
   await productsPage.addToCart(Product.SauceLabsBackpack);
   await productsPage.addToCart(Product.SauceLabsOnesie);
   await productsPage.addToCart(Product.SauceLabsBikeLight);
