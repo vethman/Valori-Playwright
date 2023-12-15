@@ -12,11 +12,11 @@ export class ProductsPage {
     }
 
     async addToCart(name: string) {
-        await this.getInventoryItemLocatorByName(name).locator('button', { hasText: 'Add to cart' }).click();
+        await this.getInventoryItemLocatorByName(name).getByRole('button', { name: 'Add to cart' }).click();
     }
 
     async removeFromCart(name: string) {
-        await this.getInventoryItemLocatorByName(name).locator('button', { hasText: 'Remove' }).click();
+        await this.getInventoryItemLocatorByName(name).getByRole('button', { name: 'Remove' }).click();
     }
 
     async assertInventoryItemPrice(name: string, price: string) {

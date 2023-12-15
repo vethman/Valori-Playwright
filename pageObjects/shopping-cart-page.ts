@@ -19,7 +19,7 @@ export class ShoppingCartPage {
     }
 
     async clickRemoveButton(name: string) {
-        await this.getCartItemByName(name).locator('button:text-is("Remove")').click();
+        await this.getCartItemByName(name).getByRole('button', { name: 'Remove' }).click();
     }
 
     async assertNumberOfItemsInShoppingCartIcon(numberOfItems: number) {

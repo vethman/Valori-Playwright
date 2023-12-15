@@ -38,21 +38,11 @@ export class LoginPage {
         await this._loginButton.click();
     }
 
-    async assertUsernameInputHasError(hasError: boolean) {
+    async assertLoginHasError(hasError: boolean, message?: string) {
         await this.assertClassHasError(this._usernameInput, hasError);
-    }
-
-    async assertPasswordInputHasError(hasError: boolean) {
         await this.assertClassHasError(this._passwordInput, hasError);
-    }
 
-    async assertErrorMessage(hasError: boolean, message?: string) {
-        if (hasError) {
-            await expect(this._errorMessage).toHaveText(message!);
-        }
-        else {
-            await expect(this._errorMessage).not.toBeVisible();
-        }
+        await this.assertErrorMessage(hasError, message);
     }
 
     private async assertClassHasError(locator: Locator, hasError: boolean) {
@@ -63,6 +53,15 @@ export class LoginPage {
         }
         else {
             await expect(locator).not.toHaveClass(errorClass)
+        }
+    }
+
+    private async assertErrorMessage(hasError: boolean, message?: string) {
+        if (hasError) {
+            await expect(this._errorMessage).toHaveText(message!);
+        }
+        else {
+            await expect(this._errorMessage).not.toBeVisible();
         }
     }
 }
