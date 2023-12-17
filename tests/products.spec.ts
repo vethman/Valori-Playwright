@@ -2,7 +2,7 @@ import { test } from './my-test';
 import { Username } from '../enums/username';
 import { Product } from '../enums/product';
 
-test.beforeEach(async ({ loginPage, productsPage }) => {
+test.beforeEach(async ({ loginPage }) => {
   await loginPage.goto();
   await loginPage.loginWithUser(Username.Standard);
 });
