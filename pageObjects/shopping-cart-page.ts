@@ -2,30 +2,16 @@ import { Locator, Page, expect } from "@playwright/test";
 
 export class ShoppingCartPage {
     private readonly _page: Page;
-    private readonly _shoppingCartIcon: Locator;
-    private readonly _shoppingCartIconLink: Locator;
+    
     private readonly _cartItem: Locator;
 
     constructor(page: Page) {
         this._page = page;
-        this._shoppingCartIcon = page.locator('#shopping_cart_container');
-        this._shoppingCartIconLink = this._shoppingCartIcon.locator('.shopping_cart_link');
         this._cartItem = page.locator('.cart_item');
-    }
-
-    async clickShoppingCartIcon() {
-        await this._shoppingCartIconLink.click();
-        await expect(this._page).toHaveURL(/.*cart.html/);
     }
 
     async clickRemoveButton(name: string) {
         await this.getCartItemByName(name).getByRole('button', { name: 'Remove' }).click();
-    }
-
-    async assertNumberOfItemsInShoppingCartIcon(numberOfItems: number) {
-        const expectedNumberOfItems = numberOfItems != 0 ? numberOfItems.toString() : '';
-        
-        await expect(this._shoppingCartIcon).toHaveText(expectedNumberOfItems);
     }
 
     async assertHasProductWithName(name: string) {

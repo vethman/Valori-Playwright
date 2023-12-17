@@ -7,20 +7,20 @@ test.beforeEach(async ({ loginPage }) => {
   await loginPage.loginWithUser(Username.Standard);
 });
 
-test('toevoegen/verwijderen item update aantal in winkelwagen', async ({ shoppingCartPage, productsPage }) => {
+test('toevoegen/verwijderen item update aantal in winkelwagen', async ({ productsPage, menuPage }) => {
   await productsPage.goto();
 
-  await shoppingCartPage.assertNumberOfItemsInShoppingCartIcon(0);
+  await menuPage.assertNumberOfItemsInShoppingCartIcon(0);
 
   await productsPage.addToCart(Product.SauceLabsBackpack);
-  await shoppingCartPage.assertNumberOfItemsInShoppingCartIcon(1);
+  await menuPage.assertNumberOfItemsInShoppingCartIcon(1);
 
   await productsPage.addToCart(Product.SauceLabsOnesie);
-  await shoppingCartPage.assertNumberOfItemsInShoppingCartIcon(2);
+  await menuPage.assertNumberOfItemsInShoppingCartIcon(2);
 
   await productsPage.removeFromCart(Product.SauceLabsOnesie);
-  await shoppingCartPage.assertNumberOfItemsInShoppingCartIcon(1);
+  await menuPage.assertNumberOfItemsInShoppingCartIcon(1);
 
   await productsPage.removeFromCart(Product.SauceLabsBackpack);
-  await shoppingCartPage.assertNumberOfItemsInShoppingCartIcon(0);
+  await menuPage.assertNumberOfItemsInShoppingCartIcon(0);
 });

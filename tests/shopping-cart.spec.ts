@@ -7,7 +7,7 @@ test.beforeEach(async ({ loginPage }) => {
   await loginPage.loginWithUser(Username.Standard);
 });
 
-test('toevoegen en verwijderen via shopping cart', async ({ shoppingCartPage, productsPage }) => {
+test('toevoegen en verwijderen via shopping cart', async ({ shoppingCartPage, productsPage, menuPage }) => {
   await productsPage.goto();
 
   await productsPage.addToCart(Product.SauceLabsBackpack);
@@ -16,9 +16,9 @@ test('toevoegen en verwijderen via shopping cart', async ({ shoppingCartPage, pr
   await productsPage.addToCart(Product.SauceLabsBoltTShirt);
   await productsPage.addToCart(Product.SauceLabsFleeceJacket);
     
-  await shoppingCartPage.clickShoppingCartIcon();
+  await menuPage.clickShoppingCartIcon();
   await shoppingCartPage.assertNumberOfItemsInShoppingCart(5);
-  await shoppingCartPage.assertNumberOfItemsInShoppingCartIcon(5);
+  await menuPage.assertNumberOfItemsInShoppingCartIcon(5);
 
   await shoppingCartPage.clickRemoveButton(Product.SauceLabsFleeceJacket);
   await shoppingCartPage.clickRemoveButton(Product.SauceLabsBoltTShirt);
@@ -27,5 +27,5 @@ test('toevoegen en verwijderen via shopping cart', async ({ shoppingCartPage, pr
   await shoppingCartPage.clickRemoveButton(Product.SauceLabsBackpack);
 
   await shoppingCartPage.assertNumberOfItemsInShoppingCart(0);
-  await shoppingCartPage.assertNumberOfItemsInShoppingCartIcon(0);
+  await menuPage.assertNumberOfItemsInShoppingCartIcon(0);
 });
