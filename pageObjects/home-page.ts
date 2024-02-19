@@ -47,6 +47,10 @@ export class HomePage {
     }
 
     private getProductSectionLocator(name: string): Locator {
-        return this._page.locator('.featured-products', { has: this._page.locator('h2', { hasText: name }) });
+        return this._page.locator('.featured-products')
+            .filter({ has: this._page.locator('h2')
+                .filter({ hasText: name }) });
+        // SAME AS ABOVE, BUT DIFFERENT STYLE
+        // return this._page.locator('.featured-products', { has: this._page.locator('h2', { hasText: name }) });
     }
 }
