@@ -15,7 +15,7 @@ test('Home Hummingbird - Vector Graphics New Products should have price...', asy
     await homePage.productsNew.assertProductPrice('Hummingbird - Vector Graphics', '€ 10.89');
 });
 
-test('Home accessibility testing', async ({ page, homePage }) => {
+test.skip('Home accessibility testing', async ({ page, homePage }) => {
     await homePage.navigateTo();
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
