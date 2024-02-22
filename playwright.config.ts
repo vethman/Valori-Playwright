@@ -42,7 +42,7 @@ export default defineConfig({
       name: 'chromium',
       use: { 
         ...devices['Desktop Chrome'],
-        storageState: 'playwright/.auth/user.json'
+        storageState: STORAGE_STATE
       },
       dependencies: ['setup']
     },
@@ -51,7 +51,7 @@ export default defineConfig({
     //   name: 'firefox',
     //   use: { 
     //     ...devices['Desktop Firefox'],
-    //     storageState: 'playwright/.auth/user.json'
+    //     storageState: STORAGE_STATE
     //   },
     //   dependencies: ['setup']
     // },
@@ -60,7 +60,7 @@ export default defineConfig({
     //   name: 'webkit',
     //   use: {
     //     ...devices['Desktop Safari'],
-    //     storageState: 'playwright/.auth/user.json'
+    //     storageState: STORAGE_STATE
     //   },
     //   dependencies: ['setup']
     // },
@@ -70,7 +70,7 @@ export default defineConfig({
     //   name: 'Mobile Chrome',
     //   use: {
     //     ...devices['Pixel 5'],
-    //     storageState: 'playwright/.auth/user.json'
+    //     storageState: STORAGE_STATE
     //   },
     //   dependencies: ['setup']
     // },
@@ -78,7 +78,7 @@ export default defineConfig({
     //   name: 'Mobile Safari',
     //   use: {
     //     ...devices['iPhone 12'],
-    //     storageState: 'playwright/.auth/user.json'},
+    //     storageState: STORAGE_STATE},
     //   dependencies: ['setup']
     // },
 
@@ -87,14 +87,14 @@ export default defineConfig({
     //   name: 'Microsoft Edge',
     //   use: { 
     //     ...devices['Desktop Edge'], channel: 'msedge',
-    //     storageState: 'playwright/.auth/user.json'},
+    //     storageState: STORAGE_STATE},
     //   dependencies: ['setup']
     // },
     // {
     //   name: 'Google Chrome',
     //   use: { 
     //     ...devices['Desktop Chrome'], channel: 'chrome',
-    //     storageState: 'playwright/.auth/user.json'},
+    //     storageState: STORAGE_STATE},
     //   dependencies: ['setup']
     // },
   ],

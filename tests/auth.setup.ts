@@ -8,6 +8,5 @@ setup('authenticate', async ({ page, loginPage }) => {
     await expect(page).not.toHaveURL(/login/);
     await page.waitForLoadState('domcontentloaded');
     
-    const test = STORAGE_STATE;
     await page.context().storageState({ path: STORAGE_STATE });
 });
