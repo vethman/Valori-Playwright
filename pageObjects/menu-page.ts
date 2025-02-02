@@ -3,13 +3,11 @@ import { MenuSubItem } from "../enums/MenuSubItem";
 import { MenuItem } from "../enums/MenuItem";
 
 export class MenuPage {
-    private readonly _page: Page;
     private readonly _topMenu: Locator;
     private readonly _menuItemsWithSubItems: Map<MenuSubItem, MenuItem> = new Map<MenuSubItem, MenuItem>;
 
-    constructor(page: Page) {
-        this._page = page;
-        this._topMenu = page.locator('#top-menu');
+    constructor(private readonly _page: Page) {
+        this._topMenu = _page.locator('#top-menu');
 
         this._menuItemsWithSubItems.set(MenuSubItem.Clothes_Men, MenuItem.Clothes);
         this._menuItemsWithSubItems.set(MenuSubItem.Clothes_Women, MenuItem.Clothes);

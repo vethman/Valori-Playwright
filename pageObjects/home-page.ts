@@ -1,18 +1,17 @@
-import { Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import { ProductComponent } from "./componentObjects/product-component";
+import AxeBuilder from "@axe-core/playwright";
 
 export class HomePage {
     private readonly PRODUCTS_POPULAR: string = 'POPULAR PRODUCTS';
     private readonly PRODUCTS_ON_SALE: string = 'ON SALE';
     private readonly PRODUCTS_NEW: string = 'NEW PRODUCTS';
 
-    private readonly _page: Page;
     private readonly _productsPopular: ProductComponent;
     private readonly _productsOnSale: ProductComponent;
     private readonly _productsNew: ProductComponent;
 
-    constructor(page: Page) {
-        this._page = page;
+    constructor(private readonly _page: Page) {
         this._productsPopular = new ProductComponent(this.getProductSectionLocator(this.PRODUCTS_POPULAR));
         this._productsOnSale = new ProductComponent(this.getProductSectionLocator(this.PRODUCTS_ON_SALE));
         this._productsNew = new ProductComponent(this.getProductSectionLocator(this.PRODUCTS_NEW));
@@ -44,6 +43,11 @@ export class HomePage {
 
     async clickAllNewProductsLink() {
         await this.getProductSectionLocator(this.PRODUCTS_NEW).click();
+    }
+
+    async assertAccessibility() {
+        const accessibilityScanResults = await new AxeBuilder({ page: this._page }).analyze();
+        expect(accessibilityScanResults.violations).toEqual([]);
     }
 
     private getProductSectionLocator(name: string): Locator {
